@@ -8,5 +8,9 @@ namespace Goudkoorts.Model
 {
     class Wharf : Rails
     {
+        public Wharf(RailType type) : base (type)
+        {
+
+        }
     }
 }

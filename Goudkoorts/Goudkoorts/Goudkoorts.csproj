@@ -50,6 +50,7 @@
     <Compile Include="Model\MapBuilder.cs" />
     <Compile Include="Model\Parking.cs" />
     <Compile Include="Model\Rails.cs" />
+    <Compile Include="Model\RailType.cs" />
     <Compile Include="Model\Runnable.cs" />
     <Compile Include="Model\Switch.cs" />
     <Compile Include="Model\Warehouse.cs" />

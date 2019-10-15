@@ -8,5 +8,12 @@ namespace Goudkoorts.Model
 {
     class Switch : Rails
     {
+        public List<Rails> From { get; set; }
+        public List<Rails> To { get; set; }
+
+        public Switch(RailType type) : base (type)
+        {
+
+        }
     }
 }

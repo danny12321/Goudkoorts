@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Parking : Rails
+    enum RailType
     {
-        public Parking(RailType type) : base (type)
-        {
-
-        }
+        HORIZONTAL,
+        VERTICAL,
+        TOPRIGHT,
+        TOPLEFT,
+        BOTTOMRIGHT,
+        BOTTOMLEFT
     }
 }
