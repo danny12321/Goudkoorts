@@ -8,5 +8,7 @@ namespace Goudkoorts.Model
 {
     class Switch : Rails
     {
+        private List<Rails> From;
+        private List<Rails> To;
     }
 }

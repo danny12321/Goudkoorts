@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Warehouse : Rails
+    class Warehouse : Runnable
     {
+
+        public override void Run()
+        {
+
+        }
     }
 }

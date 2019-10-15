@@ -11,16 +11,29 @@ namespace Goudkoorts.Controller
 {
     class Goudkoorts
     {
-        private int _speed = 1000;
-        private ConsoleView _view = new ConsoleView();
-        private Map _map;
+        private int _timer = 1000;
+        private ConsoleView _view;
+        public Map Map;
 
         public Goudkoorts()
         {
-            _map = new Map();
+            _view = new ConsoleView(this);
+            Map = new Map();
 
             _view.Welcome();
+
+            new Thread(new ThreadStart(WatchInput)).Start();
             Run();
+        }
+
+        private void WatchInput()
+        {
+            while (true)
+            {
+                var key = Console.ReadKey().Key;
+
+                Console.WriteLine(key + " is pressed");
+            }
         }
 
 
@@ -32,7 +45,7 @@ namespace Goudkoorts.Controller
             {
                 _view.RenderMap();
 
-                Thread.Sleep(_speed);
+                Thread.Sleep(_timer);
             }
         }
     }

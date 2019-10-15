@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Boat
+    class Boat : Runnable
     {
+        private int _points;
+        private int _maxPoints;
+
+        public override void Run()
+        {
+
+        }
     }
 }

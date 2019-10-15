@@ -8,7 +8,7 @@ namespace Goudkoorts.Model
 {
     class Map
     {
-        public Rails[,] _map;
+        public Rails[,] MapData { get; }
         private List<Runnable> _runnables;
 
         public Map()
@@ -17,7 +17,7 @@ namespace Goudkoorts.Model
             // _runnable = mapBuilder.GetRunnable();
 
             var mapBuilder = new MapBuilder();
-            _map = mapBuilder.GetMap();
+            MapData = mapBuilder.GetMap();
 
             
         }

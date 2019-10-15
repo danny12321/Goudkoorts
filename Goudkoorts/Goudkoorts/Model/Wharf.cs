@@ -8,5 +8,8 @@ namespace Goudkoorts.Model
 {
     class Wharf : Rails
     {
+        private Boat _boat;
+
+
     }
 }

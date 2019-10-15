@@ -8,5 +8,8 @@ namespace Goudkoorts.Model
 {
     class Rails
     {
+        private Cart cart;
+
+
     }
 }
