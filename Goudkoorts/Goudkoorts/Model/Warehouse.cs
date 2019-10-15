@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Warehouse
+    class Warehouse : Rails
     {
     }
 }
