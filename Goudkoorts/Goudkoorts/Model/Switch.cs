@@ -9,7 +9,7 @@ namespace Goudkoorts.Model
     class Switch : Rails
     {
         public List<Rails> From { get; set; }
-        public List<Rails> To { get; set; }
+        public new List<Rails> To { get; set; }
 
         // TODO: SET KEY
         public int Key = 0;
