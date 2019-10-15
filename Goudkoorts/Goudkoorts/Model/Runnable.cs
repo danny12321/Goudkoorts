@@ -8,5 +8,7 @@ namespace Goudkoorts.Model
 {
     class Runnable
     {
+
+        public virtual void Run() { }
     }
 }

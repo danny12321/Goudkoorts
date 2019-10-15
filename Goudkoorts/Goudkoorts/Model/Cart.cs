@@ -8,5 +8,16 @@ namespace Goudkoorts.Model
 {
     class Cart : Runnable
     {
+        private Rails _rails;
+
+        public override void Run()
+        {
+
+        }
+
+        public void Move()
+        {
+
+        }
     }
 }
