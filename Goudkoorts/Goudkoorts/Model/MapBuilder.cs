@@ -39,9 +39,9 @@ namespace Goudkoorts.Model
             }
 
             //Rechts boven
-            for (int i = 0; i < 3; i++)
+            for (int i = 1; i < 4; i++)
             {
-                if(i == 2)
+                if(i == 3)
                 {
                     map[i, 11] = new Rails(RailType.TOPLEFT);
                 } else
@@ -146,11 +146,6 @@ namespace Goudkoorts.Model
                 }
             }
 
-            // Warehouses
-            map[2, 0] = new Warehouse();
-            map[4, 0] = new Warehouse();
-            map[6, 0] = new Warehouse();
-
             LinkMap(map);
 
             return map;
@@ -168,7 +163,30 @@ namespace Goudkoorts.Model
                 map[i, 11].To = map[i - 1, 11];
             }
 
-            //map[11, ]
+            map[10, 3].To = map[11, 3];
+
+            ((Switch)map[9, 3]).To.Add(map[10, 3]);
+            ((Switch)map[9, 3]).From.Add(map[9, 2]);
+            ((Switch)map[9, 3]).From.Add(map[9, 4]);
+
+            map[9, 2].To = map[9, 3];
+            map[8, 2].To = map[9, 2];
+            map[7, 2].To = map[8, 2];
+            map[6, 2].To = map[7, 2];
+            map[5, 2].To = map[6, 2];
+
+            ((Switch)map[5, 3]).To.Add(map[5, 2]);
+            ((Switch)map[5, 3]).To.Add(map[5, 4]);
+            ((Switch)map[5, 3]).From.Add(map[4, 3]);
+
+            map[4, 3].To = map[5, 3];
+
+            ((Switch)map[3, 3]).To.Add(map[4, 3]);
+            ((Switch)map[3, 3]).From.Add(map[3, 2]);
+            ((Switch)map[3, 3]).From.Add(map[3, 4]);
+
+            map[4, 3].To = map[5, 3];
+            // Wip
         }
     }
 }
