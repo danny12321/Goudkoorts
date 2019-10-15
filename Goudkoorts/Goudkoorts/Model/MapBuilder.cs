@@ -147,9 +147,9 @@ namespace Goudkoorts.Model
             }
 
             // Warehouses
-            map[2, 0] = new Warehouse();
-            map[4, 0] = new Warehouse();
-            map[6, 0] = new Warehouse();
+            // map[2, 0] = new Warehouse();
+            // map[4, 0] = new Warehouse();
+            // map[6, 0] = new Warehouse();
 
             LinkMap(map);
 

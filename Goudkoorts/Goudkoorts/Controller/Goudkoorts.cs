@@ -30,9 +30,9 @@ namespace Goudkoorts.Controller
         {
             while (true)
             {
-                var key = Console.ReadKey().Key;
-
-                Console.WriteLine(key + " is pressed");
+                var key = Convert.ToInt32(Console.ReadKey().Key);
+                Map.ChangeSwitch(key);
+                _view.RenderMap();
             }
         }
 

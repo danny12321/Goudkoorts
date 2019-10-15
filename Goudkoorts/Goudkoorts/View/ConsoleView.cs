@@ -10,6 +10,7 @@ namespace Goudkoorts.View
     class ConsoleView
     {
         private Controller.Goudkoorts _controller;
+        private bool _isRendering = false;
 
         public ConsoleView(Controller.Goudkoorts controller)
         {
@@ -26,9 +27,11 @@ namespace Goudkoorts.View
 
         public void RenderMap()
         {
+            if (_isRendering) return;
+            _isRendering = true;
+
             Console.Clear();
             Console.WriteLine("This is a map. \n");
-
 
             var map = _controller.Map.MapData;
 
@@ -55,13 +58,13 @@ namespace Goudkoorts.View
                         {
                             RenderParking(height);
                         }
-                        else if(a is Warehouse)
+                        else if (a is Warehouse)
                         {
                             RenderWarehouse(height);
                         }
                         else if (a is Rails)
                         {
-                            RenderRails(height);
+                            RenderRails(a, height);
                         }
                         else
                         {
@@ -71,13 +74,52 @@ namespace Goudkoorts.View
                     }
                 }
             }
+
+            _isRendering = false;
         }
 
-        private void RenderRails(int h)
+        private void RenderRails(Rails rail, int h)
         {
-            if (h == 0) Console.Write("   ");
-            else if (h == 1) Console.Write("███");
-            else if (h == 2) Console.Write("   ");
+            switch (rail.RailType)
+            {
+                case RailType.HORIZONTAL:
+                    if (h == 0) Console.Write("   ");
+                    else if (h == 1) Console.Write("███");
+                    else if (h == 2) Console.Write("   ");
+                    break;
+
+                case RailType.VERTICAL:
+                    if (h == 0) Console.Write(" █ ");
+                    else if (h == 1) Console.Write(" █ ");
+                    else if (h == 2) Console.Write(" █ ");
+                    break;
+
+                case RailType.BOTTOMLEFT:
+                    if (h == 0) Console.Write("   ");
+                    else if (h == 1) Console.Write("██ ");
+                    else if (h == 2) Console.Write(" █ ");
+                    break;
+
+
+                case RailType.BOTTOMRIGHT:
+                    if (h == 0) Console.Write("   ");
+                    else if (h == 1) Console.Write(" ██");
+                    else if (h == 2) Console.Write(" █ ");
+                    break;
+
+                case RailType.TOPLEFT:
+                    if (h == 0) Console.Write(" █ ");
+                    else if (h == 1) Console.Write("██ ");
+                    else if (h == 2) Console.Write("   ");
+                    break;
+
+                case RailType.TOPRIGHT:
+                    if (h == 0) Console.Write(" █ ");
+                    else if (h == 1) Console.Write(" ██");
+                    else if (h == 2) Console.Write("   ");
+                    break;
+            }
+
         }
 
         private void RenderWharf(int h)
