@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Warehouse : Runnable
+    class Runnable
     {
-
-        public void Run()
-        {
-
-        }
     }
 }

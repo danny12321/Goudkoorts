@@ -10,12 +10,7 @@ namespace Goudkoorts
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("░K");
-            Console.WriteLine(" ██");
-            Console.WriteLine("█  ");
-
-
-            Console.ReadKey();
+            new Controller.Goudkoorts();
         }
     }
 }
