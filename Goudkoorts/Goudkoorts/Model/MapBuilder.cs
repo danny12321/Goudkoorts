@@ -14,9 +14,9 @@ namespace Goudkoorts.Model
             
         }
 
-        public List<List<Rails>> GetMap()
+        public Rails[,] GetMap()
         {
-            var map = new List<List<Rails>>();
+            Rails[,] map = new Rails[8,12];
 
             // De map wordt vanaf links boven gemaakt
             // Bovenste rij
@@ -24,72 +24,87 @@ namespace Goudkoorts.Model
             {
                 if (i == 9)
                 {
-                    map[0][i] = new Warehouse();
+                    map[0, i] = new Warehouse();
                 }
                 else
                 {
-                    map[0][i] = new Rails();
+                    map[0, i] = new Rails();
                 }
             }
 
             //Rechts bove
             for (int i = 0; i < 3; i++)
             {
-                map[i][11] = new Rails();
+                map[i, 11] = new Rails();
             }
 
-            map[3][10] = new Rails();
-            map[3][9] = new Switch();
+            map[3, 10] = new Rails();
+            map[3, 9] = new Switch();
 
             for (int i = 5; i < 10; i++)
             {
-                map[2][i] = new Rails();
+                map[2, i] = new Rails();
             }
 
-            map[3][5] = new Switch();
-            map[3][4] = new Rails();
-            map[3][3] = new Switch();
+            map[3, 5] = new Switch();
+            map[3, 4] = new Rails();
+            map[3, 3] = new Switch();
 
             for (int i = 1; i < 3; i++)
             {
-                map[2][i] = new Rails();
+                map[2, i] = new Rails();
             }
 
             for (int i = 1; i < 3; i++)
             {
-                map[4][i] = new Rails();
+                map[4, i] = new Rails();
             }
 
-            map[4][5] = new Rails();
-            map[4][6] = new Rails();
-            map[4][8] = new Rails();
-            map[4][9] = new Rails();
+            map[4, 5] = new Rails();
+            map[4, 6] = new Rails();
+            map[4, 8] = new Rails();
+            map[4, 9] = new Rails();
 
-            map[5][6] = new Switch();
-            map[5][7] = new Rails();
-            map[5][8] = new Switch();
+            map[5, 6] = new Switch();
+            map[5, 7] = new Rails();
+            map[5, 8] = new Switch();
 
             for (int i = 1; i < 7; i++)
             {
-                map[6][i] = new Rails();
+                map[6, i] = new Rails();
             }
 
             for (int i = 8; i < 12; i++)
             {
-                map[6][i] = new Rails();
+                map[6, i] = new Rails();
             }
 
             for (int i = 1; i < 9; i++)
             {
-                map[7][i] = new Parking();
+                map[7, i] = new Parking();
             }
 
             for (int i = 8; i < 12; i++)
             {
-                map[7][i] = new Rails();
+                map[7, i] = new Rails();
             }
 
             return map;
+        }
+
+        private void LinkMap()
+        {
+            //for (int i = 0; i < map.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < map.GetLength(1); j++)
+            //    {
+            //        if (map[i, j] is Rails)
+            //        {
+            //            Console.Write("X");
+            //
+            //        }
+            //    }
+            //}
         }
     }
 }
