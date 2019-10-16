@@ -146,6 +146,11 @@ namespace Goudkoorts.Model
                 }
             }
 
+            // Warehouses
+            map[2, 0] = new Warehouse(RailType.HORIZONTAL);
+            map[4, 0] = new Warehouse(RailType.HORIZONTAL);
+            map[6, 0] = new Warehouse(RailType.HORIZONTAL);
+
             map = LinkMap(map);
 
             return map;
@@ -225,6 +230,11 @@ namespace Goudkoorts.Model
             {
                 map[7, i].To = map[7, i - 1];
             }
+
+            //Warehouses
+            map[2, 0].To = map[2, 1];
+            map[4, 0].To = map[4, 1];
+            map[6, 0].To = map[6, 1];
 
             return map;
         }
