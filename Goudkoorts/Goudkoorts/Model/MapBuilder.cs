@@ -220,7 +220,7 @@ namespace Goudkoorts.Model
             map[5, 7].To = map[5, 8];
 
             ((Switch)map[5, 8]).To.Add(map[4, 8]);
-            ((Switch)map[5, 8]).To.Add(map[6, 4]);
+            ((Switch)map[5, 8]).To.Add(map[6, 8]);
             ((Switch)map[5, 8]).From.Add(map[5, 7]);
 
             for (int i = 6; i > 1; i--)
