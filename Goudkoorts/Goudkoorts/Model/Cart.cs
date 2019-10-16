@@ -12,12 +12,20 @@ namespace Goudkoorts.Model
 
         public override void Run()
         {
-
+            Move();
         }
 
-        public void Move()
+        private void Move()
         {
-
+            if (_rails.To != null && _rails.To.SetCart(_rails, this))
+            {
+                _rails.RemoveCart();
+                _rails = _rails.To;
+            }
+            else
+            {
+                // Cart couldnt move
+            }
         }
     }
 }

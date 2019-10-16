@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Goudkoorts.cs" />
+    <Compile Include="Model\Block.cs" />
     <Compile Include="Model\Boat.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\Map.cs" />

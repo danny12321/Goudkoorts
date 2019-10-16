@@ -12,5 +12,10 @@ namespace Goudkoorts.Model
         {
 
         }
+
+        public virtual bool SetCart(Rails from, Cart cart)
+        {
+            return true;
+        }
     }
 }
