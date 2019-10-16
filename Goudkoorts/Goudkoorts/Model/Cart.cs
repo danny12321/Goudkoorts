@@ -17,10 +17,10 @@ namespace Goudkoorts.Model
 
         private void Move()
         {
-            if (_rails.To != null && _rails.To.SetCart(_rails, this))
+            if (_rails.To != null && _rails.To is Rails && ((Rails) _rails.To).SetCart(_rails, this))
             {
                 _rails.RemoveCart();
-                _rails = _rails.To;
+                _rails = (Rails) _rails.To;
             }
             else
             {

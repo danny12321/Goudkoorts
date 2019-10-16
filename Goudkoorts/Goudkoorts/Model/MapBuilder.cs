@@ -14,9 +14,9 @@ namespace Goudkoorts.Model
             
         }
 
-        public Rails[,] GetMap()
+        public Block[,] GetMap()
         {
-            Rails[,] map = new Rails[8,12];
+            Block[,] map = new Rails[8,12];
 
             // De map wordt vanaf links boven gemaakt
             // Bovenste rij
@@ -151,7 +151,7 @@ namespace Goudkoorts.Model
             return map;
         }
 
-        private Rails[,] LinkMap(Rails[,] map)
+        private Block[,] LinkMap(Block[,] map)
         {
             for (int i = 11; i >= 1; i--)
             {
