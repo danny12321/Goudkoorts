@@ -13,7 +13,8 @@ namespace Goudkoorts.Model
 
         public Switch(RailType type) : base (type)
         {
-
+            From = new List<Rails>();
+            To = new List<Rails>();
         }
     }
 }

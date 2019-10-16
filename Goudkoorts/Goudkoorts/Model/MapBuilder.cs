@@ -146,47 +146,87 @@ namespace Goudkoorts.Model
                 }
             }
 
-            LinkMap(map);
+            map = LinkMap(map);
 
             return map;
         }
 
-        private void LinkMap(Rails[,] map)
+        private Rails[,] LinkMap(Rails[,] map)
         {
-            for (int i = 11; i <= 1; i--)
+            for (int i = 11; i >= 1; i--)
             {
                 map[0, i].To = map[0, i - 1];
             }
 
-            for (int i = 3; i <= 1; i--)
+            for (int i = 3; i >= 1; i--)
             {
                 map[i, 11].To = map[i - 1, 11];
             }
 
-            map[10, 3].To = map[11, 3];
+            map[3, 10].To = map[3, 11];
 
-            ((Switch)map[9, 3]).To.Add(map[10, 3]);
-            ((Switch)map[9, 3]).From.Add(map[9, 2]);
-            ((Switch)map[9, 3]).From.Add(map[9, 4]);
+            ((Switch)map[3, 9]).To.Add(map[3, 10]);
+            ((Switch)map[3, 9]).From.Add(map[2, 9]);
+            ((Switch)map[3, 9]).From.Add(map[4, 9]);
 
-            map[9, 2].To = map[9, 3];
-            map[8, 2].To = map[9, 2];
-            map[7, 2].To = map[8, 2];
-            map[6, 2].To = map[7, 2];
-            map[5, 2].To = map[6, 2];
+            map[2, 9].To = map[3, 9];
+            map[2, 8].To = map[2, 9];
+            map[2, 7].To = map[2, 8];
+            map[2, 6].To = map[2, 7];
+            map[2, 5].To = map[2, 6];
 
-            ((Switch)map[5, 3]).To.Add(map[5, 2]);
-            ((Switch)map[5, 3]).To.Add(map[5, 4]);
-            ((Switch)map[5, 3]).From.Add(map[4, 3]);
+            ((Switch)map[3, 5]).To.Add(map[2, 5]);
+            ((Switch)map[3, 5]).To.Add(map[4, 5]);
+            ((Switch)map[3, 5]).From.Add(map[3, 4]);
 
-            map[4, 3].To = map[5, 3];
+            map[3, 4].To = map[3, 5];
 
             ((Switch)map[3, 3]).To.Add(map[4, 3]);
             ((Switch)map[3, 3]).From.Add(map[3, 2]);
             ((Switch)map[3, 3]).From.Add(map[3, 4]);
 
-            map[4, 3].To = map[5, 3];
-            // Wip
+            map[2, 3].To = map[3, 3];
+            map[2, 2].To = map[2, 3];
+            map[2, 1].To = map[2, 2];
+
+            map[4, 3].To = map[3, 3];
+            map[4, 2].To = map[4, 3];
+            map[4, 1].To = map[4, 2];
+
+            map[4, 5].To = map[4, 6];
+            map[4, 6].To = map[5, 6];
+
+            map[4, 8].To = map[4, 9];
+            map[4, 9].To = map[5, 9];
+
+            ((Switch)map[5, 6]).To.Add(map[5, 7]);
+            ((Switch)map[5, 6]).From.Add(map[4, 6]);
+            ((Switch)map[5, 6]).From.Add(map[6, 6]);
+
+            map[5, 7].To = map[5, 8];
+
+            ((Switch)map[5, 8]).To.Add(map[4, 8]);
+            ((Switch)map[5, 8]).To.Add(map[6, 4]);
+            ((Switch)map[5, 8]).From.Add(map[5, 7]);
+
+            for (int i = 6; i > 1; i--)
+            {
+                map[6, i - 1].To = map[6, i];
+            }
+
+            map[6, 6].To = map[5, 6];
+
+            map[6, 8].To = map[6, 9];
+            map[6, 9].To = map[6, 10];
+            map[6, 10].To = map[6, 11];
+            map[6, 11].To = map[7, 11];
+
+            for (int i = 11; i >= 2; i--)
+            {
+                map[7, i].To = map[7, i - 1];
+            }
+
+            return map;
         }
     }
 }
