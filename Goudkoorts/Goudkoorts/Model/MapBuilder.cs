@@ -195,9 +195,9 @@ namespace Goudkoorts.Model
 
             map[3, 4].To = map[3, 5];
 
-            ((Switch)map[3, 3]).To.Add(map[4, 3]);
-            ((Switch)map[3, 3]).From.Add(map[3, 2]);
-            ((Switch)map[3, 3]).From.Add(map[3, 4]);
+            ((Switch)map[3, 3]).To.Add(map[3, 4]);
+            ((Switch)map[3, 3]).From.Add(map[2, 3]);
+            ((Switch)map[3, 3]).From.Add(map[4, 3]);
 
             map[2, 3].To = map[3, 3];
             map[2, 2].To = map[2, 3];
