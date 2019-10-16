@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Warehouse : Rails
+    class Warehouse : Rails, IRunnable
     {
-        public Warehouse(RailType type) : base(type)
-        {
+        private Map _map;
 
+        public Warehouse(RailType type, Map map) : base(type)
+        {
+            _map = map;
         }
 
-        public override void Run()
+        public void Run(Random random)
         {
-            Random rnd = new Random();
-            int a = rnd.Next(100);
+            int a = random.Next(100);
 
             if (a < 10)
             {
@@ -28,6 +29,8 @@ namespace Goudkoorts.Model
         {
             Cart cart = new Cart();
             ((Rails)To).SetCart(null, cart);
+
+            _map.Carts.Add(cart);
         }
     }
 }

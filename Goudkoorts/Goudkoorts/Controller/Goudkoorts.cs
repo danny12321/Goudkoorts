@@ -14,6 +14,7 @@ namespace Goudkoorts.Controller
         private int _timer = 1000;
         private ConsoleView _view;
         public Map Map;
+        private int cycle = 0;
 
         public Goudkoorts()
         {
@@ -33,18 +34,35 @@ namespace Goudkoorts.Controller
                 var key = Convert.ToInt32(Console.ReadKey().Key);
                 Map.ChangeSwitch(key);
                 _view.RenderMap();
+
             }
         }
 
 
         private void Run()
         {
-
+            Random random = new Random();
 
             while (true)
             {
                 _view.RenderMap();
 
+                Map.Carts.ForEach(c => c.Run(random));
+                Map.Warehouses.ForEach(w => w.Run(random));
+
+                // for (int y = 0; y < Map.MapData.GetLength(0); y++)
+                // {
+                //     for (int x = 0; x < Map.MapData.GetLength(1); x++)
+                //     {
+                // 
+                //         if (Map.MapData[y, x] is IRunnable)
+                //         {
+                //             ((IRunnable) Map.MapData[y, x])?.Run(random);
+                //         }
+                //     }
+                // }
+
+                cycle++;
                 Thread.Sleep(_timer);
             }
         }

@@ -9,16 +9,18 @@ namespace Goudkoorts.Model
     class Map
     {
         public Block[,] MapData { get; }
-        private List<Runnable> _runnables;
-        private List<Switch> _switches= new List<Switch>();
+        private List<Switch> _switches = new List<Switch>();
+        public List<Cart> Carts = new List<Cart>();
+        public List<Warehouse> Warehouses = new List<Warehouse>();
 
         public Map()
         {
             // _map = mapBuilder.GetMap();
             // _runnable = mapBuilder.GetRunnable();
 
-            var mapBuilder = new MapBuilder();
+            var mapBuilder = new MapBuilder(this);
             MapData = mapBuilder.GetMap();
+            Warehouses = mapBuilder.Warehouses;
 
 
         }

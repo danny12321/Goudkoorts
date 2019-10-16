@@ -9,10 +9,12 @@ namespace Goudkoorts.Model
     class MapBuilder
     {
         public List<Warehouse> Warehouses { get; set; }
+        private Map _map;
 
-        public MapBuilder()
+        public MapBuilder(Map map)
         {
             Warehouses = new List<Warehouse>();
+            _map = map;
         }
 
         public Block[,] GetMap()
@@ -148,9 +150,9 @@ namespace Goudkoorts.Model
             }
 
             // Warehouses
-            var w1 = new Warehouse(RailType.HORIZONTAL);
-            var w2 = new Warehouse(RailType.HORIZONTAL);
-            var w3 = new Warehouse(RailType.HORIZONTAL);
+            var w1 = new Warehouse(RailType.HORIZONTAL, _map);
+            var w2 = new Warehouse(RailType.HORIZONTAL, _map);
+            var w3 = new Warehouse(RailType.HORIZONTAL, _map);
 
             Warehouses.Add(w1);
             Warehouses.Add(w2);
@@ -179,7 +181,7 @@ namespace Goudkoorts.Model
 
             map[3, 10].To = map[3, 11];
 
-            ((Switch)map[3, 9]).To.Add(map[3, 10]);
+            ((Switch)map[3, 9]).PossibleTo.Add(map[3, 10]);
             ((Switch)map[3, 9]).From.Add(map[2, 9]);
             ((Switch)map[3, 9]).From.Add(map[4, 9]);
 
@@ -189,13 +191,13 @@ namespace Goudkoorts.Model
             map[2, 6].To = map[2, 7];
             map[2, 5].To = map[2, 6];
 
-            ((Switch)map[3, 5]).To.Add(map[2, 5]);
-            ((Switch)map[3, 5]).To.Add(map[4, 5]);
+            ((Switch)map[3, 5]).PossibleTo.Add(map[2, 5]);
+            ((Switch)map[3, 5]).PossibleTo.Add(map[4, 5]);
             ((Switch)map[3, 5]).From.Add(map[3, 4]);
 
             map[3, 4].To = map[3, 5];
 
-            ((Switch)map[3, 3]).To.Add(map[4, 3]);
+            ((Switch)map[3, 3]).PossibleTo.Add(map[4, 3]);
             ((Switch)map[3, 3]).From.Add(map[3, 2]);
             ((Switch)map[3, 3]).From.Add(map[3, 4]);
 
@@ -213,14 +215,14 @@ namespace Goudkoorts.Model
             map[4, 8].To = map[4, 9];
             map[4, 9].To = map[5, 9];
 
-            ((Switch)map[5, 6]).To.Add(map[5, 7]);
+            ((Switch)map[5, 6]).PossibleTo.Add(map[5, 7]);
             ((Switch)map[5, 6]).From.Add(map[4, 6]);
             ((Switch)map[5, 6]).From.Add(map[6, 6]);
 
             map[5, 7].To = map[5, 8];
 
-            ((Switch)map[5, 8]).To.Add(map[4, 8]);
-            ((Switch)map[5, 8]).To.Add(map[6, 4]);
+            ((Switch)map[5, 8]).PossibleTo.Add(map[4, 8]);
+            ((Switch)map[5, 8]).PossibleTo.Add(map[6, 4]);
             ((Switch)map[5, 8]).From.Add(map[5, 7]);
 
             for (int i = 6; i > 1; i--)

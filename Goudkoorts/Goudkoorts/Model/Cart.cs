@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Cart : Runnable
+    class Cart : IRunnable
     {
-        private Rails _rails;
+        public Rails Rails { get; set; }
 
-        public override void Run()
+        public void Run(Random run)
         {
             Move();
         }
 
         private void Move()
         {
-            if (_rails.To != null && _rails.To is Rails && ((Rails) _rails.To).SetCart(_rails, this))
+            var oldRails = Rails;
+
+            if (Rails.To != null && ((Rails)Rails.To).SetCart(Rails, this))
             {
-                _rails.RemoveCart();
-                _rails = (Rails) _rails.To;
+                oldRails.RemoveCart();
             }
             else
             {

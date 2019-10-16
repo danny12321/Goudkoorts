@@ -9,24 +9,32 @@ namespace Goudkoorts.Model
     class Switch : Rails
     {
         public List<Block> From { get; set; }
-        public new List<Block> To { get; set; }
+        public new List<Block> PossibleTo { get; set; }
 
-        public int Key = 0;
+        public override Block To
+        {
+            get
+            {
+                return PossibleTo[Key % PossibleTo.Count];
+            }
+        }
 
-        public Switch(RailType type) : base (type)
+        public int Key = 1;
+
+        public Switch(RailType type) : base(type)
         {
             From = new List<Block>();
-            To = new List<Block>();
+            PossibleTo = new List<Block>();
         }
 
         public override bool SetCart(Rails from, Cart cart)
         {
             if (From[Key % From.Count] != from)
             {
-
+                return false;
             }
 
-            return true;
+            return base.SetCart(from, cart);
         }
 
         public void Toggle()

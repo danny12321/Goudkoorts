@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Runnable
+    interface IRunnable
     {
-
-        public virtual void Run() {
-            
-        }
+        void Run(Random random);
     }
 }

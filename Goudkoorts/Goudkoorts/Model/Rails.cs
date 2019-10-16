@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Rails : Block
+    class Rails : Block, IRunnable
     {
-        private Cart _cart;
+        private Cart _cart = null;
         public RailType RailType { get; set; }
 
         public Rails(RailType type)
@@ -16,12 +16,17 @@ namespace Goudkoorts.Model
             RailType = type;
         }
 
+        public void Run(Random random)
+        {
+            _cart?.Run(random);
+        }
 
         public virtual bool SetCart(Rails from, Cart cart)
         {
             if (_cart == null)
             {
                 _cart = cart;
+                _cart.Rails = this;
                 return true;
             }
             else

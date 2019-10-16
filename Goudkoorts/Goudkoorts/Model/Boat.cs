@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Boat : Runnable
+    class Boat : IRunnable
     {
         private int _points;
         private int _maxPoints;
 
-        public override void Run()
+        public void Run(Random random)
         {
 
         }
