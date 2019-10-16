@@ -8,10 +8,11 @@ namespace Goudkoorts.Model
 {
     class MapBuilder
     {
+        public List<Warehouse> Warehouses { get; set; }
+
         public MapBuilder()
         {
-
-            
+            Warehouses = new List<Warehouse>();
         }
 
         public Block[,] GetMap()
@@ -147,9 +148,17 @@ namespace Goudkoorts.Model
             }
 
             // Warehouses
-            map[2, 0] = new Warehouse(RailType.HORIZONTAL);
-            map[4, 0] = new Warehouse(RailType.HORIZONTAL);
-            map[6, 0] = new Warehouse(RailType.HORIZONTAL);
+            var w1 = new Warehouse(RailType.HORIZONTAL);
+            var w2 = new Warehouse(RailType.HORIZONTAL);
+            var w3 = new Warehouse(RailType.HORIZONTAL);
+
+            Warehouses.Add(w1);
+            Warehouses.Add(w2);
+            Warehouses.Add(w3);
+
+            map[2, 0] = w1;
+            map[4, 0] = w2;
+            map[6, 0] = w3;
 
             map = LinkMap(map);
 
