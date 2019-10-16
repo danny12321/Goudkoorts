@@ -9,6 +9,8 @@ namespace Goudkoorts.Model
     class Runnable
     {
 
-        public virtual void Run() { }
+        public virtual void Run() {
+            
+        }
     }
 }

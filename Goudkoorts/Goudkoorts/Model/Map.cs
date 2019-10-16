@@ -8,7 +8,7 @@ namespace Goudkoorts.Model
 {
     class Map
     {
-        public Rails[,] MapData { get; }
+        public Block[,] MapData { get; }
         private List<Runnable> _runnables;
         private List<Switch> _switches= new List<Switch>();
 

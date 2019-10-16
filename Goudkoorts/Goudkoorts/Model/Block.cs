@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Block
+    class Block : Runnable
     {
+        public Block To { get; set; }
+
     }
 }

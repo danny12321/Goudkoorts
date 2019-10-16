@@ -8,15 +8,15 @@ namespace Goudkoorts.Model
 {
     class Switch : Rails
     {
-        public List<Rails> From { get; set; }
-        public new List<Rails> To { get; set; }
+        public List<Block> From { get; set; }
+        public new List<Block> To { get; set; }
 
         public int Key = 0;
 
         public Switch(RailType type) : base (type)
         {
-            From = new List<Rails>();
-            To = new List<Rails>();
+            From = new List<Block>();
+            To = new List<Block>();
         }
 
         public override bool SetCart(Rails from, Cart cart)

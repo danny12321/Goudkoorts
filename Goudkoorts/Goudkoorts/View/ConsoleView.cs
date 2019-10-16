@@ -64,7 +64,7 @@ namespace Goudkoorts.View
                         }
                         else if (a is Rails)
                         {
-                            RenderRails(a, height);
+                            RenderRails((Rails) a, height);
                         }
                         else
                         {
@@ -80,42 +80,44 @@ namespace Goudkoorts.View
 
         private void RenderRails(Rails rail, int h)
         {
+            char c = rail.HasCart() ? 'k' : ' ';
+
             switch (rail.RailType)
             {
                 case RailType.HORIZONTAL:
-                    if (h == 0) Console.Write("   ");
+                    if (h == 0) Console.Write($" {c} ");
                     else if (h == 1) Console.Write("███");
                     else if (h == 2) Console.Write("   ");
                     break;
 
                 case RailType.VERTICAL:
                     if (h == 0) Console.Write(" █ ");
-                    else if (h == 1) Console.Write(" █ ");
+                    else if (h == 1) Console.Write($" █{c}");
                     else if (h == 2) Console.Write(" █ ");
                     break;
 
                 case RailType.BOTTOMLEFT:
                     if (h == 0) Console.Write("   ");
-                    else if (h == 1) Console.Write("██ ");
+                    else if (h == 1) Console.Write($"██{c}");
                     else if (h == 2) Console.Write(" █ ");
                     break;
 
 
                 case RailType.BOTTOMRIGHT:
                     if (h == 0) Console.Write("   ");
-                    else if (h == 1) Console.Write(" ██");
+                    else if (h == 1) Console.Write($"{c}██");
                     else if (h == 2) Console.Write(" █ ");
                     break;
 
                 case RailType.TOPLEFT:
                     if (h == 0) Console.Write(" █ ");
-                    else if (h == 1) Console.Write("██ ");
+                    else if (h == 1) Console.Write($"██{c}");
                     else if (h == 2) Console.Write("   ");
                     break;
 
                 case RailType.TOPRIGHT:
                     if (h == 0) Console.Write(" █ ");
-                    else if (h == 1) Console.Write(" ██");
+                    else if (h == 1) Console.Write($"{c}██");
                     else if (h == 2) Console.Write("   ");
                     break;
             }
@@ -132,7 +134,7 @@ namespace Goudkoorts.View
         private void RenderSwitch(int h)
         {
             if (h == 0) Console.Write(" █ ");
-            else if (h == 1) Console.Write(" ██");
+            else if (h == 1) Console.Write("██");
             else if (h == 2) Console.Write(" █ ");
         }
 

@@ -9,7 +9,6 @@ namespace Goudkoorts.Model
     class Rails : Block
     {
         private Cart _cart;
-        public Rails To { get; set; }
         public RailType RailType { get; set; }
 
         public Rails(RailType type)
@@ -34,6 +33,11 @@ namespace Goudkoorts.Model
         public void RemoveCart()
         {
             _cart = null;
+        }
+
+        public bool HasCart()
+        {
+            return _cart != null;
         }
     }
 }
