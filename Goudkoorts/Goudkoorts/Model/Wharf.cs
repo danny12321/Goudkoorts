@@ -13,5 +13,10 @@ namespace Goudkoorts.Model
         {
 
         }
+
+        public override bool SetCart(Rails from, Cart cart)
+        {
+            return true;
+        }
     }
 }
