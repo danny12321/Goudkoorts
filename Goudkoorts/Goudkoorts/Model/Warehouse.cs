@@ -28,7 +28,7 @@ namespace Goudkoorts.Model
 
         private void Spawn(Action<Cart> callback)
         {
-            Cart cart = new Cart();
+            Cart cart = new Cart() { Rails = (Rails)To };
             ((Rails)To).SetCart(null, cart);
 
             callback(cart);
