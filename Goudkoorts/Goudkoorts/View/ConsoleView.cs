@@ -133,9 +133,59 @@ namespace Goudkoorts.View
 
         private void RenderSwitch(Switch s, int h)
         {
-            if (h == 0) Console.Write(" █ ");
-            else if (h == 1) Console.Write($"██{s.Key}");
-            else if (h == 2) Console.Write(" █ ");
+            char c = s.HasCart() ? 'k' : '░';
+            RailType type = s.RailType;
+
+
+            if ((s.Count % 2) == 1)
+            {
+                switch(s.RailType)
+                {
+                    case RailType.BOTTOMLEFT:
+                        type = RailType.TOPLEFT;
+                        break;
+                    case RailType.BOTTOMRIGHT:
+                        type = RailType.TOPRIGHT;
+                        break;
+                    case RailType.TOPLEFT:
+                        type = RailType.BOTTOMLEFT;
+                        break;
+                    case RailType.TOPRIGHT:
+                        type = RailType.BOTTOMRIGHT;
+                        break;
+                }
+            }
+
+            switch(type)
+            {
+                case RailType.BOTTOMLEFT:
+                    if (h == 0) Console.Write($"{s.Key}▒ ");
+                    else if (h == 1) Console.Write($"██{c}");
+                    else if (h == 2) Console.Write(" █ ");
+                    break;
+
+                case RailType.BOTTOMRIGHT:
+                    if (h == 0) Console.Write($" ▒{s.Key}");
+                    else if (h == 1) Console.Write($"{c}██");
+                    else if (h == 2) Console.Write(" █ ");
+                    break;
+
+                case RailType.TOPLEFT:
+                    if (h == 0) Console.Write($"{s.Key}█ ");
+                    else if (h == 1) Console.Write($"██{c}");
+                    else if (h == 2) Console.Write(" ▒ ");
+                    break;
+
+                case RailType.TOPRIGHT:
+                    if (h == 0) Console.Write($" █{s.Key}");
+                    else if (h == 1) Console.Write($"{c}██");
+                    else if (h == 2) Console.Write(" ▒ ");
+                    break;
+
+                default:
+                    Console.WriteLine("idk");
+                    break;
+            }
         }
 
         private void RenderParking(Rails rail, int h)

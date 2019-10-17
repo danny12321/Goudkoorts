@@ -82,7 +82,7 @@ namespace Goudkoorts.Model
 
             map[3, 4] = new Rails(RailType.HORIZONTAL);
 
-            var s3 = new Switch(RailType.BOTTOMRIGHT, 1);
+            var s3 = new Switch(RailType.TOPRIGHT, 1);
             map[3, 3] = s3;
             Switches.Add(s3);
 
@@ -113,13 +113,13 @@ namespace Goudkoorts.Model
             map[4, 8] = new Rails(RailType.BOTTOMRIGHT);
             map[4, 9] = new Rails(RailType.TOPLEFT);
 
-            var s4 = new Switch(RailType.BOTTOMRIGHT, 4);
+            var s4 = new Switch(RailType.TOPRIGHT, 4);
             map[5, 6] = s4;
             Switches.Add(s4);
 
             map[5, 7] = new Rails(RailType.HORIZONTAL);
 
-            var s5 = new Switch(RailType.BOTTOMLEFT,5);
+            var s5 = new Switch(RailType.TOPLEFT,5);
             map[5, 8] = s5;
             Switches.Add(s5);
 
