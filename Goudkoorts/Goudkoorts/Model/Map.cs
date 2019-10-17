@@ -27,6 +27,8 @@ namespace Goudkoorts.Model
 
         public void ChangeSwitch(int key)
         {
+
+            _switches[key].Toggle();
             if (key >= 0 && key < _switches.Count)
             {
                 _switches.Find(s => s.Key == key).Toggle();

@@ -134,7 +134,7 @@ namespace Goudkoorts.View
         private void RenderSwitch(int h)
         {
             if (h == 0) Console.Write(" █ ");
-            else if (h == 1) Console.Write("██");
+            else if (h == 1) Console.Write("██ ");
             else if (h == 2) Console.Write(" █ ");
         }
 
