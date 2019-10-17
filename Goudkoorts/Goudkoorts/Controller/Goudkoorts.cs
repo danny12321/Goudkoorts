@@ -14,8 +14,7 @@ namespace Goudkoorts.Controller
         private int _timer = 1000;
         private ConsoleView _view;
         public Map Map;
-        private List<Cart> _tempCartList = new List<Cart>();
-
+        
         public Goudkoorts()
         {
             _view = new ConsoleView(this);
@@ -52,13 +51,15 @@ namespace Goudkoorts.Controller
             {
                 _view.RenderMap();
 
+                var tempCartList = new List<Cart>();
+
                 // Run all the Runnables
                 Map.Runnables.ForEach(r => r.Run(random, (cart) =>
                 {
-                    _tempCartList.Add(cart);
+                    tempCartList.Add(cart);
                 }));
 
-                Map.Runnables.AddRange(_tempCartList);
+                Map.Runnables.AddRange(tempCartList);
 
                 Thread.Sleep(_timer);
             }
