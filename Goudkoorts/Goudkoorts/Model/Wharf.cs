@@ -16,7 +16,7 @@ namespace Goudkoorts.Model
             Points = 0;
         }
 
-        public void Run(Random random, Action<Cart> callback)
+        public bool Run(Random random, Action<Cart> callback)
         {
             // Dock new boat
             var ran = random.Next(100);
@@ -46,6 +46,8 @@ namespace Goudkoorts.Model
                     }
                 }
             }
+
+            return true;
         }
 
         public override bool SetCart(Rails from, Cart cart)
