@@ -11,6 +11,8 @@ namespace Goudkoorts.Model
         public List<Warehouse> Warehouses { get; set; }
         public List<Switch> Switches { get; set; }
 
+        public Wharf Wharf { get; set; }
+
         public MapBuilder()
         {
             Warehouses = new List<Warehouse>();
@@ -27,7 +29,9 @@ namespace Goudkoorts.Model
             {
                 if (i == 9)
                 {
-                    map[0, i] = new Wharf(RailType.HORIZONTAL);
+                    var w = new Wharf(RailType.HORIZONTAL);
+                    map[0, i] = w;
+                    Wharf = w;
                 }
                 else
                 {

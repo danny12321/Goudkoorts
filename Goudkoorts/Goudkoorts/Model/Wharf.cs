@@ -6,17 +6,51 @@ using System.Threading.Tasks;
 
 namespace Goudkoorts.Model
 {
-    class Wharf : Rails
+    class Wharf : Rails, IRunnable
     {
-        private Boat _boat;
+        public Boat Boat { get; private set; }
+        public int Points { get; private set; }
+
         public Wharf(RailType type) : base (type)
         {
+            Points = 0;
+        }
 
+        public void Run(Random random, Action<Cart> callback)
+        {
+            // Dock new boat
+            var ran = random.Next(100);
+            if(ran < 20)
+            {
+                if (Boat == null)
+                {
+                    Boat = new Boat();
+                }
+            }
+
+            // There is a cart stading on the Wharf
+            if(_cart != null)
+            {
+                // Cart has Freight
+                if (_cart.Freight)
+                {
+                    if (Boat != null)
+                    {
+                        if(Boat.AddFreight())
+                        {
+                            // Boat is full
+                            Points += 10;
+                        }
+
+                        Points++;
+                    }
+                }
+            }
         }
 
         public override bool SetCart(Rails from, Cart cart)
         {
-            return true;
+            return base.SetCart(from, cart);
         }
     }
 }

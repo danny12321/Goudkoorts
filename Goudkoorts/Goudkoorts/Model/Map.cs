@@ -23,6 +23,7 @@ namespace Goudkoorts.Model
             MapData = mapBuilder.GetMap();
 
             Runnables.AddRange(mapBuilder.Warehouses);
+            Runnables.Add(mapBuilder.Wharf);
             Switches = mapBuilder.Switches;
 
         }

@@ -8,8 +8,20 @@ namespace Goudkoorts.Model
 {
     class Boat : IRunnable
     {
-        private int _points;
-        private int _maxPoints;
+        private int _maxPoints = 5;
+
+        public int Points { get; private set; }
+        public Boat()
+        {
+            Points = 0;
+        }
+
+        public bool AddFreight()
+        {
+            Points++;
+
+            return Points >= _maxPoints;
+        }
 
         public void Run(Random random, Action<Cart> callback)
         {

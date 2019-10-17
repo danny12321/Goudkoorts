@@ -8,7 +8,7 @@ namespace Goudkoorts.Model
 {
     class Rails : Block
     {
-        private Cart _cart = null;
+        protected Cart _cart = null;
         public RailType RailType { get; set; }
 
         public Rails(RailType type)
