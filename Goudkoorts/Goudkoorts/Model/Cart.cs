@@ -10,7 +10,7 @@ namespace Goudkoorts.Model
     {
         public Rails Rails { get; set; }
 
-        public void Run(Random run)
+        public void Run(Random random, Action<Cart> callback)
         {
             Move();
         }

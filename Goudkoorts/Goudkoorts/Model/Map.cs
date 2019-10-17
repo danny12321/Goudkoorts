@@ -9,9 +9,6 @@ namespace Goudkoorts.Model
     class Map
     {
         public Block[,] MapData { get; }
-        private List<Switch> _switches = new List<Switch>();
-        public List<Cart> Carts = new List<Cart>();
-        public List<Warehouse> Warehouses = new List<Warehouse>();
 
         public List<IRunnable> Runnables = new List<IRunnable>();
 
@@ -22,18 +19,16 @@ namespace Goudkoorts.Model
 
             var mapBuilder = new MapBuilder(this);
             MapData = mapBuilder.GetMap();
-            Warehouses = mapBuilder.Warehouses;
-            _switches = mapBuilder.Switches;
 
-
+            Runnables.AddRange(mapBuilder.Warehouses);
+            Runnables.AddRange(mapBuilder.Switches);
         }
 
         public void ChangeSwitch(int key)
         {
-            Console.WriteLine("KEY IS " + key);
-            if (key > 0 && key < _switches.Count)
+            if (key > 0 && key < Runnables.Count)
             {
-                _switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
+                Runnables.Where(s => s is Switch && ((Switch)s).Key == key).ToList().ForEach(s => ((Switch)s).Toggle());
             }
         }
     }

@@ -16,9 +16,9 @@ namespace Goudkoorts.Model
             RailType = type;
         }
 
-        public void Run(Random random)
+        public void Run(Random random, Action<Cart> callback)
         {
-            _cart?.Run(random);
+            _cart?.Run(random, callback);
         }
 
         public virtual bool SetCart(Rails from, Cart cart)

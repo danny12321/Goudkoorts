@@ -11,7 +11,7 @@ namespace Goudkoorts.Model
         private int _points;
         private int _maxPoints;
 
-        public void Run(Random random)
+        public void Run(Random random, Action<Cart> callback)
         {
 
         }

@@ -15,22 +15,22 @@ namespace Goudkoorts.Model
             _map = map;
         }
 
-        public void Run(Random random)
+        public new void Run(Random random, Action<Cart> callback)
         {
             int a = random.Next(100);
 
             if (a < 10)
             {
-                Spawn();
+                Spawn(callback);
             }
         }
 
-        private void Spawn()
+        private void Spawn(Action<Cart> callback)
         {
             Cart cart = new Cart();
             ((Rails)To).SetCart(null, cart);
 
-            _map.Carts.Add(cart);
+            callback(cart);
         }
     }
 }
