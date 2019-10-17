@@ -75,6 +75,7 @@ namespace Goudkoorts.View
                 }
             }
 
+            Console.WriteLine($"\nPoints: {_controller.Map.Runnables.Where(r => r is Wharf).ToList().Sum(w => ((Wharf)w).Points)}");
             _isRendering = false;
         }
 
@@ -131,7 +132,7 @@ namespace Goudkoorts.View
             if (h == 0)
             {
                 if (w.Boat == null)  Console.Write("   ");
-                else Console.Write($"<{w.Points}?");
+                else Console.Write($"<{w.Boat.Points}|");
             }
             else if (h == 1) Console.Write("███");
             else if (h == 2) Console.Write("   ");
