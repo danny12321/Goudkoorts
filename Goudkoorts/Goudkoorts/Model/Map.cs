@@ -12,6 +12,8 @@ namespace Goudkoorts.Model
 
         public List<IRunnable> Runnables = new List<IRunnable>();
 
+        public List<Switch> Switches;
+
         public Map()
         {
             // _map = mapBuilder.GetMap();
@@ -21,14 +23,15 @@ namespace Goudkoorts.Model
             MapData = mapBuilder.GetMap();
 
             Runnables.AddRange(mapBuilder.Warehouses);
-            Runnables.AddRange(mapBuilder.Switches);
+            Switches = mapBuilder.Switches;
+
         }
 
         public void ChangeSwitch(int key)
         {
-            if (key > 0 && key < Runnables.Count)
+            if (key > 0 && key < Switches.Count)
             {
-                Runnables.Where(s => s is Switch && ((Switch)s).Key == key).ToList().ForEach(s => ((Switch)s).Toggle());
+                Switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
             }
         }
     }
