@@ -60,7 +60,7 @@ namespace Goudkoorts.View
                         }
                         else if (a is Warehouse)
                         {
-                            RenderWarehouse(height);
+                            RenderWarehouse((Warehouse) a, height);
                         }
                         else if (a is Rails)
                         {
@@ -197,10 +197,10 @@ namespace Goudkoorts.View
             else if (h == 2) Console.Write("   ");
         }
 
-        private void RenderWarehouse(int h)
+        private void RenderWarehouse(Warehouse w, int h)
         {
             if (h == 0) Console.Write(" - ");
-            else if (h == 1) Console.Write("|1|");
+            else if (h == 1) Console.Write($"|{w.Key}|");
             else if (h == 2) Console.Write(" - ");
         }
     }

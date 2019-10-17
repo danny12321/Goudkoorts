@@ -8,11 +8,12 @@ namespace Goudkoorts.Model
 {
     class Warehouse : Rails, IRunnable
     {
-        private Map _map;
 
-        public Warehouse(RailType type, Map map) : base(type)
+        public char Key { get; private set; }
+
+        public Warehouse(RailType type, char key) : base(type)
         {
-            _map = map;
+            Key = key;
         }
 
         public new void Run(Random random, Action<Cart> callback)

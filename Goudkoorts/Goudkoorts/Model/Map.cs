@@ -17,7 +17,7 @@ namespace Goudkoorts.Model
             // _map = mapBuilder.GetMap();
             // _runnable = mapBuilder.GetRunnable();
 
-            var mapBuilder = new MapBuilder(this);
+            var mapBuilder = new MapBuilder();
             MapData = mapBuilder.GetMap();
 
             Runnables.AddRange(mapBuilder.Warehouses);

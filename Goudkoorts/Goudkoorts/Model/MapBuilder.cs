@@ -10,13 +10,11 @@ namespace Goudkoorts.Model
     {
         public List<Warehouse> Warehouses { get; set; }
         public List<Switch> Switches { get; set; }
-        private Map _map;
 
-        public MapBuilder(Map map)
+        public MapBuilder()
         {
             Warehouses = new List<Warehouse>();
             Switches = new List<Switch>();
-            _map = map;
         }
 
         public Block[,] GetMap()
@@ -167,9 +165,9 @@ namespace Goudkoorts.Model
             }
 
             // Warehouses
-            var w1 = new Warehouse(RailType.HORIZONTAL, _map);
-            var w2 = new Warehouse(RailType.HORIZONTAL, _map);
-            var w3 = new Warehouse(RailType.HORIZONTAL, _map);
+            var w1 = new Warehouse(RailType.HORIZONTAL, 'A');
+            var w2 = new Warehouse(RailType.HORIZONTAL, 'B');
+            var w3 = new Warehouse(RailType.HORIZONTAL, 'C');
 
             Warehouses.Add(w1);
             Warehouses.Add(w2);
