@@ -48,11 +48,11 @@ namespace Goudkoorts.View
                         var a = map[y, x];
                         if (a is Wharf)
                         {
-                            RenderWharf(height);
+                            RenderWharf((Wharf)a, height);
                         }
                         else if (a is Switch)
                         {
-                            RenderSwitch((Switch) a, height);
+                            RenderSwitch((Switch)a, height);
                         }
                         else if (a is Parking)
                         {
@@ -60,11 +60,11 @@ namespace Goudkoorts.View
                         }
                         else if (a is Warehouse)
                         {
-                            RenderWarehouse((Warehouse) a, height);
+                            RenderWarehouse((Warehouse)a, height);
                         }
                         else if (a is Rails)
                         {
-                            RenderRails((Rails) a, height);
+                            RenderRails((Rails)a, height);
                         }
                         else
                         {
@@ -124,9 +124,15 @@ namespace Goudkoorts.View
 
         }
 
-        private void RenderWharf(int h)
+        private void RenderWharf(Wharf w, int h)
         {
-            if (h == 0) Console.Write(" K ");
+            char c = w.Boat == null ? ' ' : 'O';
+
+            if (h == 0)
+            {
+                if (w.Boat == null)  Console.Write("   ");
+                else Console.Write($"<{w.Points}?");
+            }
             else if (h == 1) Console.Write("███");
             else if (h == 2) Console.Write("   ");
         }
@@ -139,7 +145,7 @@ namespace Goudkoorts.View
 
             if ((s.Count % 2) == 1)
             {
-                switch(s.RailType)
+                switch (s.RailType)
                 {
                     case RailType.BOTTOMLEFT:
                         type = RailType.TOPLEFT;
@@ -156,7 +162,7 @@ namespace Goudkoorts.View
                 }
             }
 
-            switch(type)
+            switch (type)
             {
                 case RailType.BOTTOMLEFT:
                     if (h == 0) Console.Write($"{s.Key}▒ ");

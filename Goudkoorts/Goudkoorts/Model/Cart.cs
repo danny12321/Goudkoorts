@@ -26,6 +26,7 @@ namespace Goudkoorts.Model
         {
             // Return true if you won't be dead
 
+            // Sometimes null pointer
             if (Rails.To != null)
             {
                 var cartHasSet = ((Rails)Rails.To).SetCart(Rails, this);
