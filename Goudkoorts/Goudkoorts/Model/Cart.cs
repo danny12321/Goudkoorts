@@ -10,6 +10,13 @@ namespace Goudkoorts.Model
     {
         public Rails Rails { get; set; }
 
+        public bool Freight { get; private set; }
+
+        public Cart()
+        {
+            Freight = true;
+        }
+
         public bool Run(Random random, Action<Cart> callback)
         {
             return Move();
