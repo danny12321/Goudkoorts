@@ -11,7 +11,8 @@ namespace Goudkoorts
     {
         static void Main(string[] args)
         {
-            new Controller.Goudkoorts();
+            
+            new Controller.Goudkoorts(args.Length > 0);
         }
     }
 }

@@ -14,9 +14,12 @@ namespace Goudkoorts.Controller
         private int _timer = 1000;
         private ConsoleView _view;
         public Map Map;
+        private bool _god;
 
-        public Goudkoorts()
+        public Goudkoorts(bool god)
         {
+            _god = god;
+
             _view = new ConsoleView(this);
             Map = new Map();
 
@@ -47,11 +50,13 @@ namespace Goudkoorts.Controller
         {
             var dead = false;
 
-            while (!dead)
+            while (!dead || _god)
             {
                 _view.RenderMap();
+                if (dead) Console.WriteLine("\nShould be dead");
 
                 dead = !RunRunnables();
+
 
                 Thread.Sleep(_timer);
             }
