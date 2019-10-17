@@ -29,7 +29,7 @@ namespace Goudkoorts.Model
         public void ChangeSwitch(int key)
         {
             Console.WriteLine("KEY IS " + key);
-            if (key > 0 && key < _switches.Count)
+            if (key > 0 && key <= _switches.Count)
             {
                 _switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
             }

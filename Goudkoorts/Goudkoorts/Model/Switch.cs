@@ -13,13 +13,13 @@ namespace Goudkoorts.Model
 
         public int Key;
 
-        private int _count = 0;
+        public int Count { get; private set; }
 
         public override Block To
         {
             get
             {
-                return PossibleTo[_count % PossibleTo.Count];
+                return PossibleTo[Count % PossibleTo.Count];
             }
         }
 
@@ -33,7 +33,7 @@ namespace Goudkoorts.Model
 
         public override bool SetCart(Rails from, Cart cart)
         {
-            if (From[_count % From.Count] != from)
+            if (From[Count % From.Count] != from)
             {
                 return false;
             }
@@ -43,7 +43,7 @@ namespace Goudkoorts.Model
 
         public void Toggle()
         {
-            _count++;
+            Count++;
         }
     }
 }
