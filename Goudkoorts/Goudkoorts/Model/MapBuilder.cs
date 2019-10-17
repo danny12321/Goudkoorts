@@ -228,7 +228,7 @@ namespace Goudkoorts.Model
             map[4, 6].To = map[5, 6];
 
             map[4, 8].To = map[4, 9];
-            map[4, 9].To = map[5, 9];
+            map[4, 9].To = map[3, 9];
 
             ((Switch)map[5, 6]).PossibleTo.Add(map[5, 7]);
             ((Switch)map[5, 6]).From.Add(map[4, 6]);
