@@ -11,25 +11,29 @@ namespace Goudkoorts.Model
         public List<Block> From { get; set; }
         public new List<Block> PossibleTo { get; set; }
 
+        public int Key;
+
+        private int _count = 0;
+
         public override Block To
         {
             get
             {
-                return PossibleTo[Key % PossibleTo.Count];
+                return PossibleTo[_count % PossibleTo.Count];
             }
         }
 
-        public int Key = 1;
 
-        public Switch(RailType type) : base(type)
+        public Switch(RailType type, int key) : base(type)
         {
             From = new List<Block>();
             PossibleTo = new List<Block>();
+            Key = key;
         }
 
         public override bool SetCart(Rails from, Cart cart)
         {
-            if (From[Key % From.Count] != from)
+            if (From[_count % From.Count] != from)
             {
                 return false;
             }
@@ -39,7 +43,7 @@ namespace Goudkoorts.Model
 
         public void Toggle()
         {
-            Key++;
+            _count++;
         }
     }
 }
