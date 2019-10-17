@@ -14,7 +14,7 @@ namespace Goudkoorts.Controller
         private int _timer = 1000;
         private ConsoleView _view;
         public Map Map;
-        
+
         public Goudkoorts()
         {
             _view = new ConsoleView(this);
@@ -45,24 +45,41 @@ namespace Goudkoorts.Controller
 
         private void Run()
         {
-            Random random = new Random();
+            var dead = false;
 
-            while (true)
+            while (!dead)
             {
                 _view.RenderMap();
 
-                var tempCartList = new List<Cart>();
-
-                // Run all the Runnables
-                Map.Runnables.ForEach(r => r.Run(random, (cart) =>
-                {
-                    tempCartList.Add(cart);
-                }));
-
-                Map.Runnables.AddRange(tempCartList);
+                dead = !RunRunnables();
 
                 Thread.Sleep(_timer);
             }
+
+
+            Console.WriteLine("\nGame is over");
+        }
+
+        private bool RunRunnables()
+        {
+            bool dead = false;
+            Random random = new Random();
+            var tempCartList = new List<Cart>();
+
+            // Run all the Runnables
+            foreach (var r in Map.Runnables)
+            {
+                dead = !r.Run(random, (cart) =>
+                {
+                    tempCartList.Add(cart);
+                });
+
+                if (dead) return false;
+            }
+
+            Map.Runnables.AddRange(tempCartList);
+
+            return true;
         }
     }
 }

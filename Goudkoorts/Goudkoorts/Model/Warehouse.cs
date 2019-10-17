@@ -16,7 +16,7 @@ namespace Goudkoorts.Model
             Key = key;
         }
 
-        public new void Run(Random random, Action<Cart> callback)
+        public new bool Run(Random random, Action<Cart> callback)
         {
             int a = random.Next(100);
 
@@ -24,6 +24,8 @@ namespace Goudkoorts.Model
             {
                 Spawn(callback);
             }
+
+            return true;
         }
 
         private void Spawn(Action<Cart> callback)

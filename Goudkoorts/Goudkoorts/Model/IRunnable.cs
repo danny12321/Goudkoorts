@@ -8,6 +8,6 @@ namespace Goudkoorts.Model
 {
     interface IRunnable
     {
-        void Run(Random random, Action<Cart> callback);
+        bool Run(Random random, Action<Cart> callback);
     }
 }
