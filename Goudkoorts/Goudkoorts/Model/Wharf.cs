@@ -39,6 +39,7 @@ namespace Goudkoorts.Model
                         if(Boat.AddFreight())
                         {
                             // Boat is full
+                            Boat = null;
                             Points += 10;
                         }
 
