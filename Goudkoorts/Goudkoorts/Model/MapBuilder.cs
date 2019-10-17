@@ -15,6 +15,7 @@ namespace Goudkoorts.Model
         public MapBuilder(Map map)
         {
             Warehouses = new List<Warehouse>();
+            Switches = new List<Switch>();
             _map = map;
         }
 
@@ -56,7 +57,7 @@ namespace Goudkoorts.Model
 
             map[3, 10] = new Rails(RailType.HORIZONTAL);
 
-            var s1 = new Switch(RailType.TOPRIGHT);
+            var s1 = new Switch(RailType.TOPRIGHT, 3);
             map[3, 9] = s1;
             Switches.Add(s1);
 
@@ -75,13 +76,13 @@ namespace Goudkoorts.Model
                 }
             }
 
-            var s2 = new Switch(RailType.TOPLEFT);
+            var s2 = new Switch(RailType.TOPLEFT, 2);
             map[3, 5] = s2;
             Switches.Add(s2);
 
             map[3, 4] = new Rails(RailType.HORIZONTAL);
 
-            var s3 = new Switch(RailType.BOTTOMRIGHT);
+            var s3 = new Switch(RailType.BOTTOMRIGHT, 1);
             map[3, 3] = s3;
             Switches.Add(s3);
 
@@ -112,13 +113,13 @@ namespace Goudkoorts.Model
             map[4, 8] = new Rails(RailType.BOTTOMRIGHT);
             map[4, 9] = new Rails(RailType.TOPLEFT);
 
-            var s4 = new Switch(RailType.BOTTOMRIGHT);
+            var s4 = new Switch(RailType.BOTTOMRIGHT, 4);
             map[5, 6] = s4;
             Switches.Add(s4);
 
             map[5, 7] = new Rails(RailType.HORIZONTAL);
 
-            var s5 = new Switch(RailType.BOTTOMLEFT);
+            var s5 = new Switch(RailType.BOTTOMLEFT,5);
             map[5, 8] = s5;
             Switches.Add(s5);
 

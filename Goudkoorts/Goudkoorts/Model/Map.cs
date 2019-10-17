@@ -21,17 +21,17 @@ namespace Goudkoorts.Model
             var mapBuilder = new MapBuilder(this);
             MapData = mapBuilder.GetMap();
             Warehouses = mapBuilder.Warehouses;
+            _switches = mapBuilder.Switches;
 
 
         }
 
         public void ChangeSwitch(int key)
         {
-
-            _switches[key].Toggle();
-            if (key >= 0 && key < _switches.Count)
+            Console.WriteLine("KEY IS " + key);
+            if (key > 0 && key < _switches.Count)
             {
-                _switches.Find(s => s.Key == key).Toggle();
+                _switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
             }
         }
     }
