@@ -13,6 +13,8 @@ namespace Goudkoorts.Model
         public List<Cart> Carts = new List<Cart>();
         public List<Warehouse> Warehouses = new List<Warehouse>();
 
+        public List<IRunnable> Runnables = new List<IRunnable>();
+
         public Map()
         {
             // _map = mapBuilder.GetMap();
