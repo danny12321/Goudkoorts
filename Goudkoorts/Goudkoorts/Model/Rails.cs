@@ -26,7 +26,6 @@ namespace Goudkoorts.Model
             if (_cart == null)
             {
                 _cart = cart;
-                _cart.Rails = this;
                 return true;
             }
             else

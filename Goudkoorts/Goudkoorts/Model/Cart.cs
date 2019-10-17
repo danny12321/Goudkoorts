@@ -17,11 +17,20 @@ namespace Goudkoorts.Model
 
         private void Move()
         {
-            var oldRails = Rails;
 
-            if (Rails.To != null && ((Rails)Rails.To).SetCart(Rails, this))
+
+            if (Rails.To != null)
             {
-                oldRails.RemoveCart();
+
+                var cartHasSet = ((Rails)Rails.To).SetCart(Rails, this);
+
+                if (cartHasSet)
+                {
+                    var to = Rails.To;
+
+                    Rails.RemoveCart();
+                    Rails = (Rails)to;
+                }
             }
             else
             {
