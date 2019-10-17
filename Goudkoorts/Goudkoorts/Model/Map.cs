@@ -16,9 +16,6 @@ namespace Goudkoorts.Model
 
         public Map()
         {
-            // _map = mapBuilder.GetMap();
-            // _runnable = mapBuilder.GetRunnable();
-
             var mapBuilder = new MapBuilder();
             MapData = mapBuilder.GetMap();
 
@@ -30,7 +27,7 @@ namespace Goudkoorts.Model
 
         public void ChangeSwitch(int key)
         {
-            if (key > 0 && key < Switches.Count)
+            if (key > 0 && key <= Switches.Count)
             {
                 Switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
             }

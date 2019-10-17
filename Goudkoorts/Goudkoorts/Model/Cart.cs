@@ -10,25 +10,17 @@ namespace Goudkoorts.Model
     {
         public Rails Rails { get; set; }
 
-        public bool Freight { get; private set; }
-
-        public Cart()
+        public bool Run(Random random, Action<Cart> callback)
         {
-            Freight = true;
+            return Move();
         }
 
-        public void Run(Random random, Action<Cart> callback)
+        private bool Move()
         {
-            Move();
-        }
-
-        private void Move()
-        {
-
+            // Return true if you won't be dead
 
             if (Rails.To != null)
             {
-
                 var cartHasSet = ((Rails)Rails.To).SetCart(Rails, this);
 
                 if (cartHasSet)
@@ -37,11 +29,25 @@ namespace Goudkoorts.Model
 
                     Rails.RemoveCart();
                     Rails = (Rails)to;
+
+                    return true;
+                }
+                else
+                {
+                    if (Rails is Parking) return true;
+                    if (Rails.To is Switch) return true;
+
+                    return false;
                 }
             }
             else
             {
                 // Cart couldnt move
+                // Delete cart
+                Rails.RemoveCart();
+                Rails = null;
+
+                return true;
             }
         }
     }
