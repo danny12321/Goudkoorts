@@ -8,7 +8,7 @@ namespace Goudkoorts.Model
 {
     class Boat : IRunnable
     {
-        private int _maxPoints = 5;
+        private int _maxPoints = 8;
 
         public int Points { get; private set; }
         public Boat()

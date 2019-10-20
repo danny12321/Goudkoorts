@@ -43,7 +43,7 @@ namespace Goudkoorts.Model
 
         public void Toggle()
         {
-            Count++;
+            if(_cart == null) Count++;
         }
     }
 }
