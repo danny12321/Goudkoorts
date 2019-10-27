@@ -25,8 +25,8 @@ namespace Goudkoorts.Model
         private bool Move()
         {
             // Return true if you won't be dead
+            if (Rails == null) return true;
 
-            // Sometimes null pointer
             if (Rails.To != null)
             {
                 var cartHasSet = ((Rails)Rails.To).SetCart(Rails, this);
@@ -48,7 +48,7 @@ namespace Goudkoorts.Model
                     return false;
                 }
             }
-            else
+            else if(!(Rails is Parking))
             {
                 // Cart couldnt move
                 // Delete cart
@@ -57,6 +57,8 @@ namespace Goudkoorts.Model
 
                 return true;
             }
+
+            return true;
         }
     }
 }

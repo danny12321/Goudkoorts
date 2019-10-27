@@ -21,8 +21,18 @@ namespace Goudkoorts.View
         {
             Console.WriteLine("Welcome to Goudkoorts!");
             Console.WriteLine("Currently there is only one level.");
+            Console.WriteLine("The goal is to get as many carts to the ship. (If you want to know more search online)");
+            Console.WriteLine("The switches can be controlled by the numbers on your key board.");
+
+            Console.WriteLine("█ is a rail where the carts can ride on.");
+            Console.WriteLine("▓ is a parking spot. Here you can park the carts so they won't collide.");
             Console.WriteLine("Press any key to start.");
             Console.ReadKey();
+        }
+
+        public void GameOver()
+        {
+            Console.WriteLine("\nGame is over");
         }
 
         public void RenderMap()
@@ -75,6 +85,16 @@ namespace Goudkoorts.View
                 }
             }
 
+            Console.WriteLine($"\nPoints: {_controller.Map.Runnables.Where(r => r is Wharf).ToList().Sum(w => ((Wharf)w).Points)}");
+
+            if (_controller.Frame % _controller.FreezeTime == 0)
+            {
+                Console.WriteLine("Controls are frozen");
+            }
+            else
+            {
+                Console.WriteLine($"Freeze countdown: {_controller.FreezeTime - _controller.Frame % _controller.FreezeTime}");
+            }
             _isRendering = false;
         }
 
@@ -130,11 +150,11 @@ namespace Goudkoorts.View
 
             if (h == 0)
             {
-                if (w.Boat == null)  Console.Write("   ");
-                else Console.Write($"<{w.Points}?");
+                if (w.Boat == null) Console.Write("   ");
+                else Console.Write($"<{w.Boat.Points}|");
             }
             else if (h == 1) Console.Write("███");
-            else if (h == 2) Console.Write("   ");
+            else if (h == 2) Console.Write("wrf");
         }
 
         private void RenderSwitch(Switch s, int h)

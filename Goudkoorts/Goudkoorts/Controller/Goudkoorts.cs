@@ -11,10 +11,21 @@ namespace Goudkoorts.Controller
 {
     class Goudkoorts
     {
-        private int _timer = 1000;
         private ConsoleView _view;
         public Map Map;
         private bool _god;
+        private bool _dead;
+
+        public int Frame { get; private set; }
+        public int FreezeTime = 15;
+
+        public bool FreezeControls
+        {
+            get
+            {
+                return Frame % FreezeTime == 0;
+            }
+        }
 
         public Goudkoorts(bool god)
         {
@@ -27,20 +38,25 @@ namespace Goudkoorts.Controller
 
             new Thread(new ThreadStart(WatchInput)).Start();
             Run();
+
+            // Hou de console open.
+            Console.ReadKey();
         }
 
         private void WatchInput()
         {
-            while (true)
+            while (!_dead)
             {
                 ConsoleKeyInfo UserInput = Console.ReadKey(); // Get user input
+                if (FreezeControls) continue;
 
                 // We check input for a Digit
                 if (char.IsDigit(UserInput.KeyChar))
                 {
                     int key = int.Parse(UserInput.KeyChar.ToString());
                     Map.ChangeSwitch(key);
-                    _view.RenderMap();
+
+                    if (!_dead) _view.RenderMap();
                 }
             }
         }
@@ -48,21 +64,20 @@ namespace Goudkoorts.Controller
 
         private void Run()
         {
-            var dead = false;
-
-            while (!dead || _god)
+            while (!_dead || _god)
             {
+
+                _dead = !RunRunnables();
+
+                Frame++;
+
                 _view.RenderMap();
-                if (dead) Console.WriteLine("\nShould be dead");
 
-                dead = !RunRunnables();
-
-
-                Thread.Sleep(_timer);
+                if (_dead) Console.WriteLine("\nShould be dead");
+                Thread.Sleep(2000 / (Map.GetPoints() / 5 + 1));
             }
 
-
-            Console.WriteLine("\nGame is over");
+            _view.GameOver();
         }
 
         private bool RunRunnables()

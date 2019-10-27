@@ -32,5 +32,10 @@ namespace Goudkoorts.Model
                 Switches.Where(s => s.Key == key).ToList().ForEach(s => s.Toggle());
             }
         }
+
+        public int GetPoints()
+        {
+            return Runnables.Where(w => w is Wharf).ToList().Sum(w => ((Wharf)w).Points);
+        }
     }
 }
